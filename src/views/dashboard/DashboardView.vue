@@ -9,7 +9,7 @@
 <script lang="ts">
 import SideBar1 from "@/components/SideBar/NavAndSideBar.vue";
 // import DashboardCard from "../../components/Cards/DashboardCard.vue";
-import HeaderStats from "../../components/Cards/HeaderStats.vue";
+import HeaderStats from "../../components/DashboardCards/HeaderStats.vue";
 export default {
     data() {
         return {

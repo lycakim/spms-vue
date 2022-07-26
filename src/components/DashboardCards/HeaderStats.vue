@@ -60,7 +60,7 @@
 </template>
 
 <script lang='ts'>
-import CardStats from "@/components/Cards/CardStats.vue";
+import CardStats from "@/components/DashboardCards/CardStats.vue";
 
 export default {
   components: {
