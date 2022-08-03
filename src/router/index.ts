@@ -1,52 +1,47 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import LoginView from '../views/auth/LoginView.vue'
+import SignUp from '../views/auth/SignUp.vue'
+import ForgotPassword from '../views/forgotpassword/ForgotPassword.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/dashboard',
+    path: "/",
+    component: () => import(/* webpackChunkName: "about" */ '../views/auth/LoginView.vue'),
+  },
+  {
+    path: "/forgotpassword",
+    component: ForgotPassword
+  },
+  {
+    path: "/signup",
+    component: SignUp
+  },
+  {
+    path: "/dashboard",
     name: 'dashboard',
-     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/DashboardView.vue')
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/StudentListView.vue')
-  },
-  {
-    path: '/forgotpassword',
-    name: 'forgotpassword',
-    component: () => import(/* webpackChunkName: "about" */ '../views/forgotpassword/ForgotPassword.vue')
-  },
-  {
-    path: '/studentlist',
-    name: 'studentlist',
-    component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/StudentListView.vue')
-  },
-  {
-    path: '/signup',
-    name: 'signup',
-    component: () => import(/* webpackChunkName: "about" */ '../views/auth/SignUp.vue')
-  },
-  {
-    path: '/',
-    name: 'login',
-    component: LoginView
+    redirect: '/dashboard/d',
+    component: () => import(/* webpackChunkName: "about" */ '../views/HomeView.vue'),
+    children: [
+      {
+        path: "/dashboard/d",
+        name: "DashboardView",
+        component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/DashboardView.vue')
+      },
+      {
+        path: "/dashboard/s",
+        name: "StudentList",
+        component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/StudentListView.vue')
+      },
+      {
+        path: "/dashboard/r",
+        name: "ReportView",
+        component: () => import(/* webpackChunkName: "about" */ '../views/dashboard/ReportView.vue')
+      },
+    ]
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 

@@ -1,6 +1,17 @@
 <template>
-  <div class="home">
-    <h1>This is an home page</h1>
+  <div class="flex h-screen bg-gray-200 font-roboto">
+    <sidebar />
+
+    <div class="flex-1 flex flex-col overflow-hidden">
+      <Navbar />
+
+      <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+        <div class="container mx-auto px-6 py-8">
+          <router-view/>
+          <slot />
+        </div>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -12,14 +23,28 @@
   </div>
 </template> -->
 
-<!-- <script lang="ts">
+<script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import Navbar from '@/components/SideBar/Navbar.vue';
+import sidebar from '@/components/SideBar/Sidebar.vue'; // @ is an alias to /src
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
-  },
+    Navbar, sidebar
+},
+data (){
+  return {
+      showSidebar: true,
+      sidebarOpen: true,
+      isOpen: false,
+      isOpenDrawer: true
+    }
+},
+method:{
+  toggleSidebar() {
+    this.showSidebar = !this.showSidebar
+  }
+}
 });
-</script> -->
+</script>

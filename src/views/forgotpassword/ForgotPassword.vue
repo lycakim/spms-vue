@@ -1,20 +1,11 @@
 <template>
-    <div id="wrapper" class="forgotpassword" :style="myStyle">
+    <div id="wrapper">
     <ForgotPassword/>
   </div>
 </template>
 <script lang="ts">
-import ForgotPassword from "@/components/LoginCard/ForgotPassword.vue";
+import ForgotPassword from "../../components/LoginCard/ForgotPassword.vue";
 export default {
-    data() {
-        return {
-            count: 0,
-            myStyle:{
-                backgroundColor: "#D9AFD9",
-                backgroundImage: "linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)",
-            }
-        };
-    },
     components: { ForgotPassword }
 }
 </script>
